@@ -27,12 +27,6 @@ def launch_setup(context):
         PythonLaunchDescriptionSource(
             os.path.join(camera_package_path, 'launch/gemini_330_series.launch.py')),
     )
-    camera_transform_run = LaunchDescription([
-        Node(
-            package='astra_plus_transform',
-            executable='camera_transform_node'
-        )
-    ])
 
     lidar_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
@@ -57,8 +51,7 @@ def launch_setup(context):
             depth_camera_launch,
             lidar_launch,
             joystick_control_launch,
-            init_pose_launch,
-            camera_transform_run
+            init_pose_launch
             ]
 
 def generate_launch_description():
