@@ -49,7 +49,8 @@ def generate_launch_description():
         name='joint_state_publisher_gui',
         output='screen',
         condition=IfCondition(use_gui),
-        remappings=[('/joint_states', 'joint_controller')]
+        remappings=[('/joint_states', 'joint_controller'),
+                    ('/robot_description', 'robot_description')]
     )
     
     # 静态TF(static TF)
