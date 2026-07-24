@@ -23,14 +23,9 @@ def generate_launch_description():
     imu_frame_arg = DeclareLaunchArgument('imu_frame', default_value=imu_frame)
     frame_prefix_arg = DeclareLaunchArgument('frame_prefix', default_value=frame_prefix)
 
-    if compiled == 'True':
-        rosmentor_description_package_path = get_package_share_directory('mentorpi_description')
-        robot_controller_package_path = get_package_share_directory('ros_robot_controller')
-        controller_package_path = get_package_share_directory('controller')
-    else:
-        rosmentor_description_package_path = '/home/ubuntu/ros2_ws/src/simulations/mentorpi_description'
-        robot_controller_package_path = '/home/ubuntu/ros2_ws/src/driver/ros_robot_controller'
-        controller_package_path = '/home/ubuntu/ros2_ws/src/driver/controller'
+    rosmentor_description_package_path = get_package_share_directory('mentorpi_description')
+    robot_controller_package_path = get_package_share_directory('ros_robot_controller')
+    controller_package_path = get_package_share_directory('controller')
 
     robot_description_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(rosmentor_description_package_path, 'launch/robot_description.launch.py')
