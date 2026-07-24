@@ -7,17 +7,13 @@ from launch_ros.actions import Node
 from launch.actions import DeclareLaunchArgument, OpaqueFunction
 
 def launch_setup(context, *args, **kwargs):
-    compiled = os.environ.get('need_compile', 'False')
     namespace = LaunchConfiguration('namespace', default='')
     use_namespace = LaunchConfiguration('use_namespace', default='false')
 
     namespace_arg = DeclareLaunchArgument('namespace', default_value=namespace)
     use_namespace_arg = DeclareLaunchArgument('use_namespace', default_value=use_namespace)
 
-    if compiled == 'True':
-        controller_package_path = get_package_share_directory('controller')
-    else:
-        controller_package_path = '/home/ubuntu/ros2_ws/src/driver/controller'
+    controller_package_path = get_package_share_directory('controller')
     
     init_pose_param_file = os.path.join(controller_package_path, 'config/init_pose.yaml')
 
