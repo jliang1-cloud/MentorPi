@@ -5,11 +5,7 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
-    compiled = os.environ.get('need_compile', 'False')
-    if compiled == 'True':
-        calibration_package_path = get_package_share_directory('calibration')
-    else:
-        calibration_package_path = '/home/ubuntu/ros2_ws/src/calibration'
+    calibration_package_path = get_package_share_directory('calibration')
     
     calib_file_path = os.path.join(calibration_package_path, 'config/imu_calib.yaml')
     if not os.path.exists(calib_file_path):
