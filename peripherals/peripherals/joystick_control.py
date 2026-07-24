@@ -38,7 +38,7 @@ class JoystickController(Node):
         self.machine = os.environ['MACHINE_TYPE']
         self.get_logger().info('\033[1;32m%s\033[0m' % self.max_linear)
         self.servo_state_pub = self.create_publisher(SetPWMServoState, 'ros_robot_controller/pwm_servo/set_state', 1)
-        self.joy_sub = self.create_subscription(Joy, '/joy', self.joy_callback, 1)
+        self.joy_sub = self.create_subscription(Joy, 'joy', self.joy_callback, 1)
         self.buzzer_pub = self.create_publisher(BuzzerState, 'ros_robot_controller/set_buzzer', 1)
         self.mecanum_pub = self.create_publisher(Twist, 'controller/cmd_vel', 1)
 
