@@ -9,7 +9,6 @@ from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 def generate_launch_description():
-    compiled = os.environ['need_compile']
     use_gui = LaunchConfiguration('use_gui', default='true')
     use_rviz = LaunchConfiguration('use_rviz', default='true')
     namespace = LaunchConfiguration('namespace', default='')
@@ -24,10 +23,7 @@ def generate_launch_description():
     namespace_arg = DeclareLaunchArgument('namespace', default_value=namespace)
     use_namespace_arg = DeclareLaunchArgument('use_namespace', default_value=use_namespace)
 
-    if compiled == 'True':
-        mentorpi_description_package_path = get_package_share_directory('mentorpi_description')
-    else:
-        mentorpi_description_package_path = '/home/ubuntu/ros2_ws/src/simulations/mentorpi_description'
+    mentorpi_description_package_path = get_package_share_directory('mentorpi_description')
     urdf_path = os.path.join(mentorpi_description_package_path, 'urdf/mentorpi.xacro')
     rviz_config_file = os.path.join(mentorpi_description_package_path, 'rviz/view.rviz')
 
