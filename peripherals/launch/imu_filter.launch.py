@@ -22,7 +22,7 @@ def generate_launch_description():
         output='screen',
         parameters=[{"calib_file": calib_file_path}],
         remappings=[
-            ('raw', '/ros_robot_controller/imu_raw'),
+            ('raw', 'ros_robot_controller/imu_raw'),
             ('corrected', 'imu_corrected')
         ]
     )
