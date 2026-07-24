@@ -31,13 +31,8 @@ def launch_setup(context):
     imu_frame_arg = DeclareLaunchArgument('imu_frame', default_value=imu_frame)
     frame_prefix_arg = DeclareLaunchArgument('frame_prefix', default_value=frame_prefix)
 
-    if compiled == 'True':
-        peripherals_package_path = get_package_share_directory('peripherals')
-        controller_package_path = get_package_share_directory('controller')
-    else:
-        peripherals_package_path = '/home/ubuntu/ros2_ws/src/peripherals'
-        controller_package_path = '/home/ubuntu/ros2_ws/src/driver/controller'
-
+    peripherals_package_path = get_package_share_directory('peripherals')
+    controller_package_path = get_package_share_directory('controller')
 
     odom_publisher_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(controller_package_path, 'launch/odom_publisher.launch.py')
