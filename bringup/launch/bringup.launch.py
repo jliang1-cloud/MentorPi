@@ -12,6 +12,7 @@ def launch_setup(context):
     controller_package_path = get_package_share_directory('controller')
     camera_package_path = get_package_share_directory('orbbec_camera')
     peripherals_package_path = get_package_share_directory('peripherals')
+	lidar_package_path = get_package_share_directory('ldlidar_stl_ros2')
 
     controller_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
@@ -33,7 +34,7 @@ def launch_setup(context):
 
     lidar_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(peripherals_package_path, 'launch/lidar.launch.py')),
+            os.path.join(lidar_package_path, 'launch/ld19.launch.py')),
     )
 
     init_pose_launch = IncludeLaunchDescription(
