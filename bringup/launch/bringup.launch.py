@@ -52,7 +52,7 @@ def launch_setup(context):
     return [
             controller_launch,
             depth_camera_launch,
-#            lidar_launch,
+            lidar_launch,
             joystick_control_launch,
             init_pose_launch,
             ]
