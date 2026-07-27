@@ -13,7 +13,7 @@ def generate_launch_description():
 
     imu_calib_node = Node(
         package='imu_calib',
-        executable='apply_calib',
+        executable='apply_calib_node',
         name='imu_calib',
         output='screen',
         parameters=[{"calib_file": calib_file_path}],
