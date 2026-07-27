@@ -5,7 +5,9 @@ from rclpy.node import Node
 from std_srvs.srv import Trigger
 from sensor_msgs.msg import JointState
 from ros_robot_controller_msgs.msg import BuzzerState, SetPWMServoState, PWMServoState
+from ament_index_python.packages import get_package_share_directory
 import yaml
+import os
 
 class InitPose(Node):
     def __init__(self, name):
@@ -20,7 +22,8 @@ class InitPose(Node):
         self.client = self.create_client(Trigger, namespace + '/controller_manager/init_finish')
         self.client.wait_for_service()
 
-        with open('/home/ubuntu/software/Servo_upper_computer/servo_config.yaml', 'r') as file:
+        ros_robot_controller_package_path = get_package_share_directory('ros_robot_controller')
+        with open(os.path.join(ros_robot_controller_package_path, 'ros_robot_controller/servo_config.yaml'), 'r') as file:
             servo_offsets = yaml.safe_load(file)
 
         pulse = self.get_parameters_by_prefix('servo')
