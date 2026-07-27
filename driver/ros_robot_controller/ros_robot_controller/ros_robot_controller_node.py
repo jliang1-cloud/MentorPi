@@ -11,6 +11,7 @@ import signal
 import threading
 import yaml  # 已导入 PyYAML
 import os
+from ament_index_python.packages import get_package_share_directory
 from rclpy.node import Node
 from std_srvs.srv import Trigger
 from sensor_msgs.msg import Imu, Joy
@@ -69,7 +70,8 @@ class RosRobotController(Node):
         """
         从 YAML 文件中读取舵机偏差设置。
         """
-        config_path = '/home/ubuntu/software/Servo_upper_computer/servo_config.yaml'
+        ros_robot_controller_package_path = get_package_share_directory('ros_robot_controller')
+        config_path = os.path.join(ros_robot_controller_package_path, 'ros_robot_controller/servo_config.yaml')
         try:
             with open(config_path, 'r') as file:
                 config = yaml.safe_load(file)
