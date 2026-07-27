@@ -10,7 +10,6 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, GroupAction, TimerAction, OpaqueFunction
 
 def launch_setup(context):
-    compiled = os.environ['need_compile']
     namespace = LaunchConfiguration('namespace', default='')
     use_namespace = LaunchConfiguration('use_namespace', default='false').perform(context)
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
