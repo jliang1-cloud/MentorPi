@@ -3,18 +3,12 @@ from launch_ros.actions import Node
 from launch import LaunchDescription, LaunchService
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
+from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
-    compiled = os.environ['need_compile']
-
-    if compiled == 'True':
-        robot_controller_package_path = get_package_share_directory('ros_robot_controller')
-        mentorpi_description_package_path = get_package_share_directory('mentorpi_description')
-        peripherals_package_path = get_package_share_directory('peripherals')
-    else:
-        robot_controller_package_path = '/home/ubuntu/ros2_ws/src/driver/ros_robot_controller'
-        mentorpi_description_package_path = '/home/ubuntu/ros2_ws/src/simulations/mentorpi_description/'
-        peripherals_package_path = '/home/ubuntu/ros2_ws/src/peripherals'
+    robot_controller_package_path = get_package_share_directory('ros_robot_controller')
+    mentorpi_description_package_path = get_package_share_directory('mentorpi_description')
+    peripherals_package_path = get_package_share_directory('peripherals')
 
     robot_controller_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(robot_controller_package_path, 'launch/ros_robot_controller.launch.py')]),
