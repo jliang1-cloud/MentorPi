@@ -10,6 +10,7 @@ import rclpy
 import signal
 import threading
 import yaml  # 已导入 PyYAML
+import os
 from rclpy.node import Node
 from std_srvs.srv import Trigger
 from sensor_msgs.msg import Imu, Joy
