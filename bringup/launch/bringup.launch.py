@@ -47,7 +47,7 @@ def launch_setup(context):
     )
 
     joystick_control_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(os.path.join(peripherals_package_path, 'launch/joystick_contro_01l.launch.py')),
+        PythonLaunchDescriptionSource(os.path.join(peripherals_package_path, 'launch/joystick_control.launch.py')),
     )
 
     return [
