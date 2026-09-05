@@ -26,8 +26,8 @@ def generate_launch_description():
 
     joystick_control_node = Node(
         package='peripherals',
-        executable='joystick_control',
-        name='joystick_control',
+        executable='joystick_control_00',
+        name='joystick_control_00',
         output='screen',
         parameters=[
             {'max_linear': max_linear,
